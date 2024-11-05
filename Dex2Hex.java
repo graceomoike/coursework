@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail; 
 
 class Dex2Hex
 {
