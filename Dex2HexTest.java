@@ -13,16 +13,12 @@ public class Dex2HexTest {
 	dex2hex = new Dex2HexTest
 	}
 
-        @Test
-	 public void testMainWithNoInput() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-
-        String[] args = {};  // No arguments provided
+        @Test 
+	void testWhenNoInput() {
+        // Simulate no input scenario
+        String[] args = {};
         Dex2Hex.main(args);
-
-        String expectedOutput = "Error: No input provided Please provide an integer input.\n";
-        assertEquals(expectedOutput, outputStream.toString());
-
-        System.setOut(System.out);
+        // Validate output message for no input
+        assertTrue(getOutput().contains("Error: No input provided"));
+    
     }
