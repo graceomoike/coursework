@@ -1,22 +1,23 @@
 import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class Dex2HexTest {
 
-	public Dex2HexTest();
+	public Dex2HexTest()
 	{}
 	Dex2Hex dex2hex;
 	
 	@Before
 	public void setUp() {
-	dex2hex = new Dex2HexTest
+	dex2hex = new Dex2Hex();
 	}
 
         @Test 
-	void testWhenNoInput() {
+	public void testWhenNoInput() {
         // Simulate no input scenario
         String[] args = {};
         Dex2Hex.main(args);
@@ -25,7 +26,7 @@ public class Dex2HexTest {
     
    	 }
 	@Test
-    	void testWhenNonIntegerInput() {
+    	public void testWhenNonIntegerInput() {
         // Simulate non-integer input scenario
         String[] args = {"abc"};
         Dex2Hex.main(args);
