@@ -1,9 +1,13 @@
 import org.junit.*;
 import java.lang.Exception;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
-public class Testrunner {
+
+public class TestRunner {
 	public static void main(String[] args) {
-		Result result = JunitCore.runClasses(CalculatorTest.class);
+		Result result = JUnitCore.runClasses(Dex2HexTest.class);
 		int fails = 0;
 		try {
 			for (Failure failure : result.getFailures()) {
