@@ -1,6 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class Dex2HexTest {
 
@@ -29,6 +31,15 @@ public class Dex2HexTest {
         Dex2Hex.main(args);
         // Validate output message for non-integer input
         assertTrue(getOutput().contains("Error: Non-integer input provided"));
-   	 }
+    	}
+
+	private String getOutput() {
+    	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    	PrintStream originalOut = System.out;
+    	System.setOut(new PrintStream(outputStream));
+    	// Run the code that outputs to console here
+    	System.setOut(originalOut);
+    	return outputStream.toString();
+}
 
 	}
