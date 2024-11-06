@@ -18,13 +18,13 @@ public class Dex2HexTest {
     }
 
     @Test
-    public void testValidIntegerInput() {
+    public void testWhenValidIntegerInput() {
         // Simulate valid integer input
-        String[] args = {"255"};
+        String[] args = {"156"};
         String output = getOutput(args);
 
         // Validate hexadecimal conversion output
-        assertTrue(output.contains("Converting the Decimal Value 255 to Hex..."));
+        assertTrue(output.contains("Converting the Decimal Value 156 to Hex..."));
         assertTrue(output.contains("Hexadecimal representation is: FF"));
         assertTrue(output.contains("The number has been converted successfully!"));
     }
@@ -36,17 +36,17 @@ public class Dex2HexTest {
         String output = getOutput(args);  // Use getOutput to capture console output
 
         // Validate output message for no input
-        assertTrue(output.contains("Error: No input provided"));
+        assertTrue(output.contains("Error: No input was given"));
     }
 
     @Test
     public void testWhenNonIntegerInput() {
         // Simulate non-integer input scenario
-        String[] args = {"ffs"};
+        String[] args = {"abc"};
         String output = getOutput(args);  // Use getOutput to capture console output
 
         // Validate output message for non-integer input
-        assertTrue(output.contains("Error: Non-integer input provided"));
+        assertTrue(output.contains("Error: Non-integer input was given"));
     }
 
     // Utility method to capture console output with input arguments
