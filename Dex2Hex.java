@@ -33,7 +33,7 @@ class Dex2Hex {
         }
 
         System.out.println("Hexadecimal representation is: " + hexadecimal);
-        System.out.println("The number has been converted successfully!");
+        System.out.println("The number has been converted successfully!!");
     }
 }
 
