@@ -34,6 +34,6 @@ public static int Arg1;
         }
 
         System.out.println("Hexadecimal representation is: " + hexadecimal);
-	System.out.println("A number has been converted!");
+	System.out.println("A number has been converted succesfully!");
     }
 }
