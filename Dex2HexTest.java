@@ -5,42 +5,63 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+
 public class Dex2HexTest {
 
-	public Dex2HexTest()
-	{}
-	Dex2Hex dex2hex;
-	
-	@Before
-	public void setUp() {
-	dex2hex = new Dex2Hex();
-	}
+    public Dex2HexTest() {}
 
-        @Test 
-	public void testWhenNoInput() {
+    Dex2Hex dex2hex;
+
+    @Before
+    public void setUp() {
+        dex2hex = new Dex2Hex();
+    }
+
+    @Test
+    public void testValidIntegerInput() {
+        // Simulate valid integer input
+        String[] args = {"255"};
+        String output = getOutput(args);
+
+        // Validate hexadecimal conversion output
+        assertTrue(output.contains("Converting the Decimal Value 255 to Hex..."));
+        assertTrue(output.contains("Hexadecimal representation is: FF"));
+        assertTrue(output.contains("The number has been converted successfully!"));
+    }
+
+    @Test 
+    public void testWhenNoInput() {
         // Simulate no input scenario
         String[] args = {};
-        Dex2Hex.main(args);
-        // Validate output message for no input
-        assertTrue(getOutput().contains("Error: No input provided"));
-    
-   	 }
-	@Test
-    	public void testWhenNonIntegerInput() {
-        // Simulate non-integer input scenario
-        String[] args = {"abc"};
-        Dex2Hex.main(args);
-        // Validate output message for non-integer input
-        assertTrue(getOutput().contains("Error: Non-integer input provided"));
-    	}
+        String output = getOutput(args);  // Use getOutput to capture console output
 
-	private String getOutput() {
-    	ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    	PrintStream originalOut = System.out;
-    	System.setOut(new PrintStream(outputStream));
-    	// Run the code that outputs to console here
-    	System.setOut(originalOut);
-    	return outputStream.toString();
+        // Validate output message for no input
+        assertTrue(output.contains("Error: No input provided"));
+    }
+
+    @Test
+    public void testWhenNonIntegerInput() {
+        // Simulate non-integer input scenario
+        String[] args = {"ffs"};
+        String output = getOutput(args);  // Use getOutput to capture console output
+
+        // Validate output message for non-integer input
+        assertTrue(output.contains("Error: Non-integer input provided"));
+    }
+
+    // Utility method to capture console output with input arguments
+    private String getOutput(String[] args) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        // Run Dex2Hex with the specified args
+        Dex2Hex.main(args);
+
+        // Restore original System.out
+        System.setOut(originalOut);
+
+        return outputStream.toString();
+    }
 }
 
-	}
