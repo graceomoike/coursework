@@ -1,6 +1,5 @@
 import java.util.Scanner;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail; 
+ 
 
 class Dex2Hex {
     public static void main(String args[]) {
@@ -33,7 +32,7 @@ class Dex2Hex {
         }
 
         System.out.println("Hexadecimal representation is: " + hexadecimal);
-        System.out.println("The number has been converted successfully!!");
+        System.out.println("The number has been converted successfully!!!");
     }
 }
 
