@@ -25,7 +25,7 @@ public class Dex2HexTest {
 
         // Validate hexadecimal conversion output
         assertTrue(output.contains("Converting the Decimal Value 156 to Hex..."));
-        assertTrue(output.contains("Hexadecimal representation is: FF"));
+        assertTrue(output.contains("Hexadecimal representation is: 9C"));
         assertTrue(output.contains("The number has been converted successfully!"));
     }
 
@@ -36,7 +36,7 @@ public class Dex2HexTest {
         String output = getOutput(args);  // Use getOutput to capture console output
 
         // Validate output message for no input
-        assertTrue(output.contains("Error: No input was given"));
+        assertTrue(output.contains("Error: No input provided. Please enter an integer value."));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class Dex2HexTest {
         String output = getOutput(args);  // Use getOutput to capture console output
 
         // Validate output message for non-integer input
-        assertTrue(output.contains("Error: Non-integer input was given"));
+        assertTrue(output.contains("Error: Non-integer input provided. Please enter a valid integer value."));
     }
 
     // Utility method to capture console output with input arguments
