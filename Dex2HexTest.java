@@ -14,7 +14,7 @@ public class Dex2HexTest {
 
     @Before
     public void setUp() {
-        dex2hex = new Dex2Hex();
+        
     }
 
     @Test
