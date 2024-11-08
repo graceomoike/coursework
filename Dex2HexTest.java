@@ -1,31 +1,28 @@
-import org.junit.Test;
-import org.junit.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public class Dex2HexTest {
 
-    private static final Logger logger = Logger.getLogger(Dex2HexTest.class.getName());
+    private final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
+    private ByteArrayOutputStream logOutput;
+    private StreamHandler logHandler;
 
     @Before
     public void setUp() {
-        // No instantiation of Dex2Hex required if we're only testing its static main method
+        logOutput = new ByteArrayOutputStream();
+        logHandler = new StreamHandler(logOutput, new SimpleFormatter());
+        logger.addHandler(logHandler);
     }
 
     @Test
     public void testWhenValidIntegerInput() {
         String[] args = {"156"};
-        String output = getOutput(args);
+        runDex2HexWithArgs(args);
 
+        String output = getLoggerOutput();
         assertTrue(output.contains("Converting the Decimal Value 156 to Hex..."));
         assertTrue(output.contains("Hexadecimal representation is: 9C"));
     }
@@ -33,33 +30,33 @@ public class Dex2HexTest {
     @Test 
     public void testWhenNoInput() {
         String[] args = {};
-        String output = getOutput(args);
+        runDex2HexWithArgs(args);
 
+        String output = getLoggerOutput();
         assertTrue(output.contains("Error: No input provided. Please enter an integer value."));
     }
 
     @Test
     public void testWhenNonIntegerInput() {
         String[] args = {"abc"};
-        String output = getOutput(args);
+        runDex2HexWithArgs(args);
 
+        String output = getLoggerOutput();
         assertTrue(output.contains("Error: Non-integer input provided. Please enter a valid integer value."));
     }
 
-    // Utility method to capture console output with input arguments
-    private String getOutput(String[] args) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outputStream));  // Temporarily redirect System.out
+    // Helper method to run Dex2Hex and capture logger output
+    private void runDex2HexWithArgs(String[] args) {
+        logOutput.reset(); // Clear the previous log output
+        Dex2Hex.main(args);
+        logHandler.flush(); // Ensure all log messages are written to the stream
+    }
 
-        try {
-            Dex2Hex.main(args);  // Run main with redirected output
-        } finally {
-            System.setOut(originalOut);  // Restore original System.out
-        }
-
-        return outputStream.toString();
+    // Method to retrieve the logger output as a String
+    private String getLoggerOutput() {
+        return logOutput.toString();
     }
 }
+
 
 
