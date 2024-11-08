@@ -20,12 +20,17 @@ public class TestRunner {
             }
             
            if (fails > 0) {
-		logger.severe(String.format("%d tests failed", fails));
-    		System.exit(1);
-	   } else {
-    		logger.info("All tests passed successfully.");
-    		System.exit(0);
-	}
+    		if (logger.isLoggable(Level.SEVERE)) {
+        	logger.severe(String.format("%d tests failed", fails));
+    	}
+    	    System.exit(1);
+	} else {
+	   if (logger.isLoggable(Level.INFO)) {
+	        logger.info("All tests passed successfully.");
+    }
+	   System.exit(0);
+}
+
 
 
         } catch (Exception e) {
