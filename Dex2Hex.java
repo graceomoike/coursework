@@ -1,11 +1,14 @@
- 
-
-class Dex2Hex {
+ class Dex2Hex {
     public static void main(String args[]) {
-        // Check if no input is provided
+
+        private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
+
+
+	// Check if no input is provided
+        public static void main(String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: No input provided. Please enter an integer value.");
-            return;
+            logger.severe("Error: No input provided. Please enter an integer value.");
+            System.exit(1); // Exit or handle as appropriate
         }
 
         int arg1;
