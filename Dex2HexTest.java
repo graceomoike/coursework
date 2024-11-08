@@ -6,7 +6,7 @@ import java.util.logging.*;
 
 public class Dex2HexTest {
 
-    private final Logger logger = Logger.getLogger(Dex2HexTest.class.getName());
+    private final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
     private ByteArrayOutputStream logOutput;
     private StreamHandler logHandler;
 
