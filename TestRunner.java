@@ -19,13 +19,14 @@ public class TestRunner {
                 fails++;
             }
             
-            if (fails > 0) {
-                logger.severe(fails + " tests failed");
-                System.exit(1);
-            } else {
-                logger.info("All tests passed successfully.");
-                System.exit(0);
-            }
+           if (fails > 0) {
+		logger.severe(String.format("%d tests failed", fails));
+    		System.exit(1);
+	   } else {
+    		logger.info("All tests passed successfully.");
+    		System.exit(0);
+	}
+
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "An error occurred during test execution: ", e);
