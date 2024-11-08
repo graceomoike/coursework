@@ -1,48 +1,27 @@
-import java.util.logging.Logger;
+import java.util.Scanner;
 
-class Dex2Hex {
+class Dex2Hex
+{
+public static int Arg1;
+    public static void main(String args[])    {
+        Arg1 = Integer.parseInt(args[0]);
+        char ch[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        int rem, num;
+        num = Arg1;
+        String hexadecimal="";
+        System.out.println("Converting the Decimal Value " + num + " to Hex...");
 
-    private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
-
-    public static void main(String[] args) {
-
-        // Check if no input is provided
-        if (args.length == 0) {
-            logger.severe("Error: No input provided. Please enter an integer value.");
-            return; // Exit or handle as appropriate
+        while(num != 0)
+        {
+            rem=num%16;
+            hexadecimal= ch[rem] + hexadecimal;
+            num= num/16;
         }
 
-        int arg1;
-        try {
-            // Attempt to parse the input as an integer
-            arg1 = Integer.parseInt(args[0]);
-        } catch (NumberFormatException e) {
-            logger.severe("Error: Non-integer input provided. Please enter a valid integer value.");
-            return;
-        }
+        System.out.println("Hexadecimal representation is: " + hexadecimal);
 
-        // Proceed with the hex conversion if input is valid
-        char[] ch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-
-        // Separate declaration of "num"
-        int num = arg1;
-        int rem;
-
-        // Use StringBuilder for hexadecimal construction
-        StringBuilder hexadecimal = new StringBuilder();
-
-        // Log conversion start with formatted message
-        logger.info(String.format("Converting the Decimal Value %d to Hex...", num));
-
-        while (num != 0) {
-            rem = num % 16;
-            hexadecimal.insert(0, ch[rem]);  // Prepend the character to the StringBuilder
-            num = num / 16;
-        }
-
-        // Log the final hexadecimal result
-        logger.info(String.format("Hexadecimal representation is: %s", hexadecimal.toString()));
     }
 }
+
 
 
