@@ -5,47 +5,44 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.logging.Logger;
 
 public class Dex2HexTest {
 
-    public Dex2HexTest() {}
-     // Empty constructor - required by JUnit framework for test initialization
-    Dex2Hex dex2hex;
+    private static final Logger logger = Logger.getLogger(Dex2HexTest.class.getName());
 
     @Before
     public void setUp() {
-        dex2hex = new Dex2Hex();
+        // No instantiation of Dex2Hex required if we're only testing its static main method
     }
 
     @Test
     public void testWhenValidIntegerInput() {
-        // Simulate valid integer input
         String[] args = {"156"};
         String output = getOutput(args);
 
-        // Validate hexadecimal conversion output
         assertTrue(output.contains("Converting the Decimal Value 156 to Hex..."));
         assertTrue(output.contains("Hexadecimal representation is: 9C"));
-        
     }
 
     @Test 
     public void testWhenNoInput() {
-        // Simulate no input scenario
         String[] args = {};
-        String output = getOutput(args);  // Use getOutput to capture console output
+        String output = getOutput(args);
 
-        // Validate output message for no input
         assertTrue(output.contains("Error: No input provided. Please enter an integer value."));
     }
 
     @Test
     public void testWhenNonIntegerInput() {
-        // Simulate non-integer input scenario
         String[] args = {"abc"};
-        String output = getOutput(args);  // Use getOutput to capture console output
+        String output = getOutput(args);
 
-        // Validate output message for non-integer input
         assertTrue(output.contains("Error: Non-integer input provided. Please enter a valid integer value."));
     }
 
@@ -53,15 +50,16 @@ public class Dex2HexTest {
     private String getOutput(String[] args) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outputStream));
+        System.setOut(new PrintStream(outputStream));  // Temporarily redirect System.out
 
-        // Run Dex2Hex with the specified args
-        Dex2Hex.main(args);
-
-        // Restore original System.out
-        System.setOut(originalOut);
+        try {
+            Dex2Hex.main(args);  // Run main with redirected output
+        } finally {
+            System.setOut(originalOut);  // Restore original System.out
+        }
 
         return outputStream.toString();
     }
 }
+
 
