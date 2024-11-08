@@ -9,7 +9,7 @@ import java.io.PrintStream;
 public class Dex2HexTest {
 
     public Dex2HexTest() {}
-
+     // Empty constructor - required by JUnit framework for test initialization
     Dex2Hex dex2hex;
 
     @Before
