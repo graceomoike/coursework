@@ -1,5 +1,5 @@
 import java.util.logging.Logger;
-import java.util.logging.Level;
+
 
 
  class Dex2Hex {
@@ -11,7 +11,7 @@ import java.util.logging.Level;
 	// Check if no input is provided
         if (args.length == 0) {
             logger.severe("Error: No input provided. Please enter an integer value.");
-            System.exit(1); // Exit or handle as appropriate
+            return; // Exit or handle as appropriate
         }
 
         int arg1;
