@@ -1,10 +1,14 @@
+import java.util.logging.Logger;
+
 class Dex2Hex {
+
+    private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
 
     public static void main(String[] args) {
 
         // Check if no input is provided
         if (args.length == 0) {
-            System.out.println("Error: No input provided. Please enter an integer value.");
+            logger.severe("Error: No input provided. Please enter an integer value.");
             return; // Exit or handle as appropriate
         }
 
@@ -13,7 +17,7 @@ class Dex2Hex {
             // Attempt to parse the input as an integer
             arg1 = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            System.out.println("Error: Non-integer input provided. Please enter a valid integer value.");
+            logger.severe("Error: Non-integer input provided. Please enter a valid integer value.");
             return;
         }
 
@@ -27,8 +31,8 @@ class Dex2Hex {
         // Use StringBuilder for hexadecimal construction
         StringBuilder hexadecimal = new StringBuilder();
 
-        // Print conversion start with formatted message
-        System.out.println(String.format("Converting the Decimal Value %d to Hex...", num));
+        // Log conversion start with formatted message
+        logger.info(String.format("Converting the Decimal Value %d to Hex...", num));
 
         while (num != 0) {
             rem = num % 16;
@@ -36,10 +40,11 @@ class Dex2Hex {
             num = num / 16;
         }
 
-        // Print the final hexadecimal result
-        System.out.println(String.format("Hexadecimal representation is: %s", hexadecimal.toString()));
+        // Log the final hexadecimal result
+        logger.info(String.format("Hexadecimal representation is: %s", hexadecimal.toString()));
     }
 }
+
 
 
 
