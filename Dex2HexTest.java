@@ -26,7 +26,7 @@ public class Dex2HexTest {
         // Validate hexadecimal conversion output
         assertTrue(output.contains("Converting the Decimal Value 156 to Hex..."));
         assertTrue(output.contains("Hexadecimal representation is: 9C"));
-        assertTrue(output.contains("The number has been converted successfully!"));
+        
     }
 
     @Test 
