@@ -1,14 +1,12 @@
 import java.util.logging.Logger;
 
-
-
- class Dex2Hex {
+class Dex2Hex {
 
     private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-	// Check if no input is provided
+        // Check if no input is provided
         if (args.length == 0) {
             logger.severe("Error: No input provided. Please enter an integer value.");
             return; // Exit or handle as appropriate
@@ -24,20 +22,27 @@ import java.util.logging.Logger;
         }
 
         // Proceed with the hex conversion if input is valid
-        char ch[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        int rem, num = arg1;
-        String hexadecimal = "";
+        char[] ch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
-        logger.info("Converting the Decimal Value " + num + " to Hex...");
+        // Separate declaration of "num"
+        int num = arg1;
+        int rem;
+
+        // Use StringBuilder for hexadecimal construction
+        StringBuilder hexadecimal = new StringBuilder();
+
+        // Log conversion start with formatted message
+        logger.info(String.format("Converting the Decimal Value %d to Hex...", num));
 
         while (num != 0) {
             rem = num % 16;
-            hexadecimal = ch[rem] + hexadecimal;
+            hexadecimal.insert(0, ch[rem]);  // Prepend the character to the StringBuilder
             num = num / 16;
         }
 
-        logger.info("Hexadecimal representation is: " + hexadecimal);
-        
+        // Log the final hexadecimal result
+        logger.info(String.format("Hexadecimal representation is: %s", hexadecimal.toString()));
     }
 }
+
 
