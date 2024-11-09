@@ -1,4 +1,4 @@
-package devOps_coursework;
+package devops_coursework;
 
 import org.junit.*;
 import org.junit.runner.JUnitCore;

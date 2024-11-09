@@ -1,4 +1,4 @@
-package devOps_coursework;
+package devops_coursework;
 
 import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
