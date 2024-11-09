@@ -1,4 +1,4 @@
-package com/devops;
+package com.devops;
 
 
 import static org.junit.Assert.*;
