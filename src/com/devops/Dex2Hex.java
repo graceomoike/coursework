@@ -1,7 +1,5 @@
 package com/devops;
 
-
-
 import java.util.logging.Logger;
 
 class Dex2Hex {
