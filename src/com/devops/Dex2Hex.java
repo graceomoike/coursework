@@ -20,7 +20,7 @@ class Dex2Hex {
             arg1 = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
             logger.severe("Error: Non-integer input provided. Please enter a valid integer value."); // Log an error if the input is not a valid integer
-            return; // Exit the program if input is invalid
+            return; // Exit the program if the input is invalid
         }
 
         char[] ch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
