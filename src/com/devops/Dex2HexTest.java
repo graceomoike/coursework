@@ -8,9 +8,9 @@ import java.util.logging.*;
 import org.junit.*;
 
 public class Dex2HexTest {
-    private static final Logger logger = Logger.getLogger(Dex2HexTest.class.getName());
-    private ByteArrayOutputStream logStream;
-    private StreamHandler testHandler;
+    private static final Logger logger = Logger.getLogger(Dex2HexTest.class.getName()); // Logger instance specifically for the Dex2HexTest class
+    private ByteArrayOutputStream logStream; // Stream to capture log output for test validation
+    private StreamHandler testHandler; // Handler to process log entries for the test
 
     @Before
     public void setUp() {
@@ -20,7 +20,7 @@ public class Dex2HexTest {
         testHandler = new StreamHandler(new PrintStream(logStream), new SimpleFormatter() {
             @Override
             public synchronized String format(LogRecord logRecord) {
-                return logRecord.getMessage() + "\n";
+                return logRecord.getMessage() + "\n"; // Capture only the message part of each log entry
             }
         });
 
@@ -35,12 +35,14 @@ public class Dex2HexTest {
 
     @After
     public void tearDown() {
+	// Remove the test handler from both loggers to clean up after tests
         logger.removeHandler(testHandler);
         Logger.getLogger(Dex2Hex.class.getName()).removeHandler(testHandler);
     }
 
     @Test
     public void testHexadecimalConversion() {
+	// Set up arguments to pass "255" as input to the main method in Dex2Hex
         String[] args = {"255"};
         captureLoggerOutput(() -> Dex2Hex.main(args));
 

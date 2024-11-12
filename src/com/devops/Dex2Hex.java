@@ -4,27 +4,28 @@ import java.util.logging.Logger;
 
 class Dex2Hex {
 
+    // Initialize a Logger instance for Dex2Hex class
     private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
 
     public static void main(String[] args) {
 
-        //!!! Check if no input is provided
+        // Check if no input is provided
         if (args.length == 0) {
             logger.severe("Error: No input provided. Please enter an integer value.");
             return;
         }
-	//comment
+	// Try to parse the input argument as an integer
         int arg1;
         try {
             arg1 = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            logger.severe("Error: Non-integer input provided. Please enter a valid integer value.");
-            return;
+            logger.severe("Error: Non-integer input provided. Please enter a valid integer value."); // Log an error if the input is not a valid integer
+            return; // Exit the program if the input is invalid
         }
 
         char[] ch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
         int num = arg1;
-        int rem;
+        int rem; // Variable to store remainder during conversion
 
         // Use StringBuilder for hexadecimal construction
         StringBuilder hexadecimal = new StringBuilder();
@@ -33,7 +34,7 @@ class Dex2Hex {
         if (logger.isLoggable(java.util.logging.Level.INFO)) {
             logger.info(String.format("Converting the Decimal Value %d to Hex...", num));
         }
-
+ 	// Perform the decimal-to-hexadecimal conversion
         while (num != 0) {
             rem = num % 16;
             hexadecimal.insert(0, ch[rem]);
