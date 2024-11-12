@@ -14,7 +14,7 @@ class Dex2Hex {
             logger.severe("Error: No input provided. Please enter an integer value.");
             return;
         }
-	// Try to parse the input argument as an integer
+	// Try to parse the input argument as  integer
         int arg1;
         try {
             arg1 = Integer.parseInt(args[0]);
