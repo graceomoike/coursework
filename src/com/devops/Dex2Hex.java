@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 class Dex2Hex {
 
-    // Initialise  Logger instance for Dex2Hex class
+    // Initialise  logger instance for Dex2Hex class
     private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
 
     public static void main(String[] args) {
