@@ -34,7 +34,7 @@ class Dex2Hex {
         if (logger.isLoggable(java.util.logging.Level.INFO)) {
             logger.info(String.format("Converting the Decimal Value %d to Hex...", num));
         }
- 	// Perform the decimal-to-hexadecimal conversion
+ 	// Perform the decimal to hexadecimal conversion
         while (num != 0) {
             rem = num % 16;
             hexadecimal.insert(0, ch[rem]);
